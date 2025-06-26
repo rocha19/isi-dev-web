@@ -1,7 +1,7 @@
 import * as z from "zod";
 
 export const percentageCouponSchema = z.object({
-	percent: z.string().optional(),
+	code: z.string(),
 });
 
 export type PercentageCouponSchema = z.infer<typeof percentageCouponSchema>;

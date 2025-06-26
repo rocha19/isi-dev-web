@@ -14,7 +14,11 @@ import {
 
 export type CouponType = "fixed" | "percent";
 
-export const CouponModal = () => {
+type Props = {
+	productId: string;
+};
+
+export const CouponModal = ({ productId }: Props) => {
 	const [couponType, setCouponType] = useState<CouponType>("fixed");
 
 	return (
@@ -53,8 +57,10 @@ export const CouponModal = () => {
 					</div>
 				</DialogHeader>
 
-				{couponType === "fixed" && <FixedCouponForm />}
-				{couponType === "percent" && <PercentageCouponForm />}
+				{couponType === "fixed" && <FixedCouponForm productId={productId} />}
+				{couponType === "percent" && (
+					<PercentageCouponForm productId={productId} />
+				)}
 			</DialogContent>
 		</Dialog>
 	);

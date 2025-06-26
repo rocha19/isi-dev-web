@@ -11,8 +11,8 @@ export const Search = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const navigate = useNavigate();
 
-	const [min, setMin] = useState(searchParams.get("min") || "");
-	const [max, setMax] = useState(searchParams.get("max") || "");
+	const [minPrice, setMinPrice] = useState(searchParams.get("minPrice") || "");
+	const [maxPrice, setMaxPrice] = useState(searchParams.get("maxPrice") || "");
 	const [search, setSearch] = useState(searchParams.get("search") || "");
 
 	useEffect(() => {
@@ -21,21 +21,21 @@ export const Search = () => {
 		debounceTimer = setTimeout(() => {
 			const params: Record<string, string> = {};
 
-			if (min) params.min = min;
-			if (max) params.max = max;
+			if (minPrice) params.minPrice = minPrice;
+			if (maxPrice) params.maxPrice = maxPrice;
 			if (search) params.search = search;
 
 			setSearchParams(params);
 		}, 300);
-	}, [search, max, min, setSearchParams]);
+	}, [search, maxPrice, minPrice, setSearchParams]);
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 
 		const params: Record<string, string> = {};
 
-		if (min) params.min = min;
-		if (max) params.max = max;
+		if (minPrice) params.min = minPrice;
+		if (maxPrice) params.maxPrice = maxPrice;
 		if (search) params.search = search;
 
 		setSearchParams(params);
@@ -52,8 +52,8 @@ export const Search = () => {
 					<Input
 						className="py-5"
 						placeholder="R$ 0,00"
-						value={min}
-						onChange={(e) => setMin(e.target.value)}
+						value={minPrice}
+						onChange={(e) => setMinPrice(e.target.value)}
 					/>
 				</div>
 				<div className="grid gap-1">
@@ -61,8 +61,8 @@ export const Search = () => {
 					<Input
 						className="py-5"
 						placeholder="R$ 0,00"
-						value={max}
-						onChange={(e) => setMax(e.target.value)}
+						value={maxPrice}
+						onChange={(e) => setMaxPrice(e.target.value)}
 					/>
 				</div>
 				<Button className="py-5" type="submit">

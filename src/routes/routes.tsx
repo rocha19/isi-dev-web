@@ -9,7 +9,7 @@ export const router = createBrowserRouter([
 		element: <MainLayout />,
 		children: [
 			{ index: true, element: <App /> },
-			{ path: "/editar-produto", element: <UpdateProduct /> },
+			{ path: "/editar-produto/:id", element: <UpdateProduct /> },
 			{ path: "/criar-produto", element: <CreateProduct /> },
 		],
 	},
